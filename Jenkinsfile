@@ -1,8 +1,7 @@
-pipeline {
+  pipeline {
   agent any
 
   environment {
-    Docker
     DOCKER_REGISTRY = "docker.io"
     DOCKER_IMAGE = "10088989/my-node-app"
     DOCKER_TAG = "latest"
