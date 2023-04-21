@@ -5,8 +5,6 @@
     DOCKER_REGISTRY = "docker.io"
     DOCKER_IMAGE = "10088989/my-node-app"
     DOCKER_TAG = "latest"
-    DOCKER_USERNAME = credentials('timmyJenkey').username
-    DOCKER_PASSWORD = credentials('timmyJenkey').password
   }
 
   stages {
