@@ -2,6 +2,7 @@ pipeline {
   agent any
 
   environment {
+    Docker
     DOCKER_REGISTRY = "docker.io"
     DOCKER_IMAGE = "10088989/my-node-app"
     DOCKER_TAG = "latest"
@@ -10,7 +11,10 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh "docker build -t $DOCKER_REGISTRY/$DOCKER_IMAGE:$DOCKER_TAG ."
+        withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+          sh "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD $DOCKER_REGISTRY"
+          sh "docker build -t $DOCKER_REGISTRY/$DOCKER_IMAGE:$DOCKER_TAG ."
+        }
       }
     }
     stage('Push') {
@@ -23,4 +27,3 @@ pipeline {
     }
   }
 }
-
