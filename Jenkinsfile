@@ -11,7 +11,7 @@ pipeline{
 		stage('Build') {
 
 			steps {
-				sh 'docker build -t 10088989/my-node-app:latest .'
+				sh '/Applications/Docker.app/Contents/Resources/bin/docker build -t 10088989/my-node-app:latest .'
 			}
 		}
 
@@ -25,7 +25,7 @@ pipeline{
 		stage('Push') {
 
 			steps {
-				sh 'docker push 10088989/my-node-app'
+				sh '/Applications/Docker.app/Contents/Resources/bin/docker docker push 10088989/my-node-app'
 			}
 		}
 	}
