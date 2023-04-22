@@ -27,7 +27,7 @@ pipeline{
 
 	post {
 		always {
-			echo "Webhook received from Bitbucket!"
+			echo "Push made to Timmy's App Repo!"
 		}
 		success {
 			echo "Pipeline succeeded!"
