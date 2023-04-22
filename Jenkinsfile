@@ -33,7 +33,7 @@ pipeline{
 			echo "Pipeline succeeded!"
 		}
 		failure {
-			echo "Pipeline has failed!"
+			echo "Pipeline failed!"
 		}
 	}
 
