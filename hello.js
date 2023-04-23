@@ -18,7 +18,7 @@ app.get('/', async (req, res) => {
     producer.send({
         data: 'Producer to the rescue!',
     });
-    res.send('Hello, DevOps Engineer!');
+    res.send('Hello, DevOps Engineer.');
 });
 
 app.listen(3000, () => {
