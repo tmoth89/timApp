@@ -4,12 +4,12 @@
     "description": "A simple 'Hello, World!' Node.js application",
     "main": "hello.js",
     "scripts": {
-      "start": "node hello.js"
+        "start": "node hello.js"
     },
     "author": "Timothy Johnson",
     "license": "MIT",
     "dependencies": {
-      "express": "^4.17.1"
+        "express": "^4.17.1",
+        "pulsar-client": "^1.8.2"
     }
-  }
-  
+}
