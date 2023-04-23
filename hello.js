@@ -18,7 +18,7 @@ async function createProducer() {
     }
 }
 
-app.get('/myendpoint', async (req, res) => {
+app.get('/', async (req, res) => {
     const producer = await createProducer();
     producer.send({
         data: 'Producer to the Rescue!',
