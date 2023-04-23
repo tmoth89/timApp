@@ -1,29 +1,23 @@
 # README #
-Made changes more changes.
-This README would normally document whatever steps are necessary to get your application up and running.
+Project that takes a small application from Containerization to Deployment
 
-### What is this repository for? ###
+App built using Node.js and Express Framework
+- Wrote application using Express and Pulsar modules.
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+Containerized App using Docker and DockerHub
+- Wrote a Dockerfile to containerize the application and used Remote DockerHub account to store image.
 
-### How do I get set up? ###
+Using Gihub as Repository
+- Stored application code and it's dependencies in public Repo. Also set up Webhook for Jenkins CI/CD Pipeline.
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+Kubernetes used to Deploy containerized Application
+- Setup a local Kubernetes cluster using docker desktop. 
 
-### Contribution guidelines ###
+Jenkins used for CI/CD pipeline
+- Built pipeline using Jenkinsfile that automates Build/Deployment process.
 
-* Writing tests
-* Code review
-* Other guidelines
+Pulsar Integrated into Application
+- 
 
-### Who do I talk to? ###
 
-* Repo owner or admin
-* Other community or team contact
+
