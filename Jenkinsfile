@@ -5,6 +5,19 @@ pipeline{
 		DOCKERHUB_CREDENTIALS=credentials('timmyJenkey')
 	}
 
+	triggers {
+      docker {
+      // Trigger the pipeline whenever a new image is pushed to Docker Hub
+      registryUrl('https://registry.hub.docker.com')
+      registryCredentialsId('timmyJenkey')
+      repository('my-node-app')
+      tag('*')
+      }
+    }
+  
+
+
+
 	stages {
 		stage('Build') {
 			steps {
@@ -23,6 +36,17 @@ pipeline{
 				sh '/Applications/Docker.app/Contents/Resources/bin/docker push 10088989/my-node-app'
 			}
 		}
+
+		stage('Deploy to Kubernetes') {
+            steps {
+                // Clone the repository containing the Kubernetes manifests
+                checkout([$class: 'GitSCM', branches: [[name: 'Main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'Repo', url: 'https://github.com/tmoth89/timmyk8s-manifests']]])
+        
+                // Deploy the updated Kubernetes manifests to the cluster
+                sh 'kubectl apply -f webApp.yml'
+            }
+        }
+        
 	}
 
 	post {
@@ -37,7 +61,4 @@ pipeline{
 		}
 	}
 
-	triggers {
-		bitbucketPush()
-	}
 }
