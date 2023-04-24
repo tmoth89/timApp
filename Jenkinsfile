@@ -30,7 +30,8 @@ pipeline{
              steps {
                 // Clone the repository containing the Kubernetes manifests
                 checkout([$class: 'GitSCM', branches: [[name: 'Main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'Repo', url: 'https://github.com/tmoth89/timmyk8s-manifests']]])
-        
+                //Make file executable
+				sh 'chmod +x /usr/local/bin/kubectl'
                 // Deploy the updated Kubernetes manifests to the cluster
                 sh '/usr/local/bin/kubectl apply -f webApp.yml'
               }
