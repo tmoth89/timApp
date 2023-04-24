@@ -5,18 +5,7 @@ pipeline{
 		DOCKERHUB_CREDENTIALS=credentials('timmyJenkey')
 	}
 
-	triggers {
-      docker {
-      // Trigger the pipeline whenever a new image is pushed to Docker Hub
-      registryUrl('https://registry.hub.docker.com')
-      registryCredentialsId('timmyJenkey')
-      repository('my-node-app')
-      tag('*')
-      }
-    }
-  
-
-
+	
 
 	stages {
 		stage('Build') {
@@ -38,13 +27,13 @@ pipeline{
 		}
 
 		stage('Deploy to Kubernetes') {
-            steps {
+             steps {
                 // Clone the repository containing the Kubernetes manifests
-                checkout([$class: 'GitSCM', branches: [[name: 'Main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'Repo', url: 'https://github.com/tmoth89/timmyk8s-manifests']]])
+                checkout([$class: 'GitSCM', branches: [[name: 'master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github-creds', url: 'https://github.com/my-org/my-kubernetes-manifests-repo.git']]])
         
                 // Deploy the updated Kubernetes manifests to the cluster
-                sh 'kubectl apply -f webApp.yml'
-            }
+                sh 'kubectl apply -f my-kubernetes-manifests.yml'
+              }
         }
         
 	}
