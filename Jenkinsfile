@@ -32,7 +32,7 @@ pipeline{
                 checkout([$class: 'GitSCM', branches: [[name: 'Main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'Repo', url: 'https://github.com/tmoth89/timmyk8s-manifests']]])
         
                 // Deploy the updated Kubernetes manifests to the cluster
-                sh 'kubectl apply -f webApp.yml'
+                sh '/usr/local/bin/kubectl apply -f webApp.yml'
               }
         }
         
