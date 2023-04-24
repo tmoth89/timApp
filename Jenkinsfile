@@ -29,7 +29,7 @@ pipeline{
 		stage('Deploy to Kubernetes') {
              steps {
                 // Clone the repository containing the Kubernetes manifests
-                checkout([$class: 'GitSCM', branches: [[name: 'master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github-creds', url: 'https://github.com/my-org/my-kubernetes-manifests-repo.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: 'master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'Repo', url: 'https://github.com/tmoth89/timmyk8s-manifests']]])
         
                 // Deploy the updated Kubernetes manifests to the cluster
                 sh 'kubectl apply -f my-kubernetes-manifests.yml'
