@@ -27,5 +27,5 @@ app.get('/', async (req, res) => {
 });
 
 app.listen(3000, () => {
-    console.log('App listening on port 80!');
+    console.log('App listening on port 80');
 });
