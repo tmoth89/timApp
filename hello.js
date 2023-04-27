@@ -7,15 +7,11 @@ const client = new pulsar.Client({
 });
 
 async function createProducer() {
-    try {
+    
         const producer = await client.createProducer({
             topic: 'my-topic',
         });
         return producer;
-    } catch (err) {
-        console.error(err);
-        throw err;
-    }
 }
 
 app.get('/', async (req, res) => {
